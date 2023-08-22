@@ -12,7 +12,9 @@ import {
   LoginScreen,
   RegisterScreen,
   ResetPasswordScreen,
-  Dashboard,} from './src/screens'
+  Dashboard,
+  AddPatientScreen,
+} from './src/screens'
 import { getToken, setToken } from './src/core/authToken'
 
 
@@ -32,6 +34,7 @@ export default function App() {
           <Stack.Screen name="LoginScreen" component={LoginScreen} />
           <Stack.Screen name="RegisterScreen" component={RegisterScreen} />
           <Stack.Screen name="Dashboard" component={Dashboard} />
+          <Stack.Screen name="AddPatientScreen" component={AddPatientScreen} />
           <Stack.Screen
             name="ResetPasswordScreen"
             component={ResetPasswordScreen}

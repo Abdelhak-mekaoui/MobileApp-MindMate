@@ -8,7 +8,8 @@ export const theme = {
     primary: '#461066',
     secondary: '#AC64A5',
     third:'#461066',
-    error: '#f13a59',
+    add:'#0E8113',
+    error: '#0E8113',
   },
   sizes: {
     xSmall: 10,

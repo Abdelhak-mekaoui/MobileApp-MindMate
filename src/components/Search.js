@@ -48,7 +48,7 @@ const styles = StyleSheet.create({
       height: '100%',
       lineHeight: 26,
       borderStyle: 'solid',
-      borderColor: theme.primary, // Make sure theme.primary is a valid color value
+      borderColor: theme.colors.primary, // Make sure theme.primary is a valid color value
       borderWidth: 1, // Set the border width
     },
     searchInput: {
