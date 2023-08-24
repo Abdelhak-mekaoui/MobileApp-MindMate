@@ -4,6 +4,7 @@ import { NavigationContainer } from '@react-navigation/native'
 import { createStackNavigator } from '@react-navigation/stack'
 import { theme } from './src/core/theme'
 import { host } from './src/core/host'
+import { programs } from './src/core/programs'
 
 
 
@@ -14,67 +15,61 @@ import {
   ResetPasswordScreen,
   Dashboard,
   AddPatientScreen,
+  PatientProgram,
 } from './src/screens'
-import { getToken, setToken } from './src/core/authToken'
-
+// import SideMenu from './src/components/SideMenu'
 
 const Stack = createStackNavigator()
 
+
+function MainStack() {
+  return (
+    <Stack.Navigator
+      initialRouteName="StartScreen"
+      screenOptions={{
+      headerShown: false,
+    }}
+    >
+      <Stack.Screen name="StartScreen" component={StartScreen} />
+      <Stack.Screen name="LoginScreen" component={LoginScreen} />
+      <Stack.Screen name="RegisterScreen" component={RegisterScreen} />
+      <Stack.Screen name="Dashboard" component={Dashboard} />
+      <Stack.Screen name="AddPatientScreen" component={AddPatientScreen} />
+      <Stack.Screen name="PatientProgram" component={PatientProgram} />
+      <Stack.Screen
+        name="ResetPasswordScreen"
+        component={ResetPasswordScreen}
+      />
+    </Stack.Navigator>
+  );
+}
+
+
+
 export default function App() {
   return (
-    <Provider theme={theme} host={host}>
-      <NavigationContainer>
-        <Stack.Navigator
-          initialRouteName="StartScreen"
-          screenOptions={{
+    <Provider theme={theme} host={host} programs={programs}>
+        <NavigationContainer>
+          {/* <Stack.Navigator
+            initialRouteName="StartScreen"
+            screenOptions={{
             headerShown: false,
-          }}
-        >
-          <Stack.Screen name="StartScreen" component={StartScreen} />
-          <Stack.Screen name="LoginScreen" component={LoginScreen} />
-          <Stack.Screen name="RegisterScreen" component={RegisterScreen} />
-          <Stack.Screen name="Dashboard" component={Dashboard} />
-          <Stack.Screen name="AddPatientScreen" component={AddPatientScreen} />
-          <Stack.Screen
-            name="ResetPasswordScreen"
-            component={ResetPasswordScreen}
-          />
-        </Stack.Navigator>
-      </NavigationContainer>
+            }}
+          >
+            <Stack.Screen name="StartScreen" component={StartScreen} />
+            <Stack.Screen name="LoginScreen" component={LoginScreen} />
+            <Stack.Screen name="RegisterScreen" component={RegisterScreen} />
+            <Stack.Screen name="Dashboard" component={Dashboard} />
+            <Stack.Screen name="AddPatientScreen" component={AddPatientScreen} />
+            <Stack.Screen
+              name="ResetPasswordScreen"
+              component={ResetPasswordScreen}
+            />
+          </Stack.Navigator> */}
+            <MainStack />
+          </NavigationContainer>
     </Provider>
   )
 }
-// import { createDrawerNavigator } from '@react-navigation/drawer';
-
-// // ... (your imports and existing code)
-
-// const Drawer = createDrawerNavigator();
-
-// export default function App() {
-//   return (
-//     <Provider theme={theme} host={host}>
-//       <NavigationContainer>
-//         <Stack.Navigator
-//           initialRouteName="StartScreen"
-//           screenOptions={{
-//             headerShown: false,
-//           }}
-//         >
-//           <Stack.Screen name="StartScreen" component={StartScreen} />
-//           <Stack.Screen name="LoginScreen" component={LoginScreen} />
-//           <Stack.Screen name="RegisterScreen" component={RegisterScreen} />
-//           <Stack.Screen name="ResetPasswordScreen" component={ResetPasswordScreen} />
-//           <Stack.Screen name="Dashboard" component={Dashboard} />
-//         </Stack.Navigator>
-//         <Drawer.Navigator>
-//           <Drawer.Screen name="Dashboard" component={Dashboard} />
-//         </Drawer.Navigator>
-//       </NavigationContainer>
-//     </Provider>
-//   )
-// }
-
-
-
 
 

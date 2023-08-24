@@ -1,191 +1,54 @@
 import React from 'react';
-import { Image, StyleSheet } from 'react-native';
-import { Text } from 'react-native-paper';
-import { View } from 'react-native';
-import { theme } from '../core/theme';
-import SimpleLineIcons from 'react-native-vector-icons/SimpleLineIcons';
-import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
-import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
-import FontAwesome from 'react-native-vector-icons/FontAwesome';
+import { View, Text, TouchableOpacity, StyleSheet, ScrollView } from 'react-native';
 
-export default function SideMenu(props) {
+const SideMenu = ({ navigation }) => {
+  const navigateToScreen = (screenName) => {
+    navigation.navigate(screenName);
+  };
+
   return (
-    <NavigationContainer>
-      <Drawer.Navigator
-        drawerContent={
-          (props) => {
-            return (
-              <SafeAreaView>
-                <View
-                  style={{
-                    height: 200,
-                    width: '100%',
-                    justifyContent: "center",
-                    alignItems: "center",
-                    borderBottomColor: "#f4f4f4",
-                    borderBottomWidth: 1
-                  }}
-                >
-                  <Image
-                    source={User}
-                    style={{
-                      height: 130,
-                      width: 130,
-                      borderRadius: 65
-                    }}
-                  />
-                  <Text
-                    style={{
-                      fontSize: 22,
-                      marginVertical: 6,
-                      fontWeight: "bold",
-                      color: "#111"
-                    }}
-                  >Isabella Joanna</Text>
-                  <Text
-                    style={{
-                      fontSize: 16,
-                      color: "#111"
-                    }}
-                  >Product Manager</Text>
-                </View>
-                <DrawerItemList {...props} />
-              </SafeAreaView>
-            )
-          }
-        }
-        screenOptions={{
-          drawerStyle: {
-            backgroundColor: "#fff",
-            width: 250
-          },
-          headerStyle: {
-            backgroundColor: "#f4511e",
-          },
-          headerTintColor: "#fff",
-          headerTitleStyle: {
-            fontWeight: "bold"
-          },
-          drawerLabelStyle: {
-            color: "#111"
-          }
-        }}
-      >
-        <Drawer.Screen
-          name="Home"
-          options={{
-            drawerLabel: "Home",
-            title: "Home",
-            drawerIcon: () => (
-              <SimpleLineIcons name="home" size={20} color="#808080" />
-            )
-          }}
-          component={Home}
-        />
-        <Drawer.Screen
-          name="Timer"
-          options={{
-            drawerLabel: "Timer",
-            title: "Timer",
-            drawerIcon: () => (
-              <MaterialIcons name="timer" size={20} color="#808080" />
-            )
-          }}
-          component={Timer}
-        />
-        <Drawer.Screen
-          name="Categories"
-          options={{
-            drawerLabel: "Categories",
-            title: "Categories",
-            drawerIcon: () => (
-              <MaterialIcons name="category" size={20} color="#808080" />
-            )
-          }}
-          component={Categories}
-        />
-        <Drawer.Screen
-          name="Customize"
-          options={{
-            drawerLabel: "Customize",
-            title: "Customize",
-            drawerIcon: () => (
-              <MaterialIcons name="dashboard-customize" size={20} color="#808080" />
-            )
-          }}
-          component={Customize}
-        />
-        <Drawer.Screen
-          name="Settings"
-          options={{
-            drawerLabel: "Settings",
-            title: "Settings",
-            drawerIcon: () => (
-              <SimpleLineIcons name="settings" size={20} color="#808080" />
-            )
-          }}
-          component={Settings}
-        />
-
-        <Drawer.Screen
-          name="Backups"
-          options={{
-            drawerLabel: "Backups",
-            title: "Backups",
-            drawerIcon: () => (
-              <MaterialIcons name="backup" size={20} color="#808080" />
-            )
-          }}
-          component={Backups}
-        />
-
-        <Drawer.Screen
-          name="Get Premium"
-          options={{
-            drawerLabel: "Get Premuim",
-            title: "Get Premium",
-            drawerIcon: () => (
-              <MaterialCommunityIcons name="certificate" size={20} color="#808080" />
-            )
-          }}
-          component={GetPremium}
-        />
-        <Drawer.Screen
-          name="Rate this App"
-          options={{
-            drawerLabel: "Rate this App",
-            title: "Rate this App",
-            drawerIcon: () => (
-              <FontAwesome name="star" size={20} color="#808080" />
-            )
-          }}
-          component={RateApp}
-        />
-
-        <Drawer.Screen
-          name="Contact"
-          options={{
-            drawerLabel: "Contact",
-            title: "Contact",
-            drawerIcon: () => (
-              <MaterialCommunityIcons name="message-alert-outline" size={20} color="#808080" />
-            )
-          }}
-          component={Contact}
-        />
-      </Drawer.Navigator>
-    </NavigationContainer>
+    <View style={styles.container}>
+      <ScrollView>
+        <TouchableOpacity
+          style={styles.menuItem}
+          onPress={() => navigateToScreen('Home')}
+        >
+          <Text style={styles.menuText}>Home</Text>
+        </TouchableOpacity>
+        <TouchableOpacity
+          style={styles.menuItem}
+          onPress={() => navigateToScreen('Profile')}
+        >
+          <Text style={styles.menuText}>Profile</Text>
+        </TouchableOpacity>
+        <TouchableOpacity
+          style={styles.menuItem}
+          onPress={() => navigateToScreen('Settings')}
+        >
+          <Text style={styles.menuText}>Settings</Text>
+        </TouchableOpacity>
+      </ScrollView>
+    </View>
   );
-}
+};
 
+const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+    
+    position: 'absolute',
+    zIndex:5,
+    width:'90%'
+  },
+  menuItem: {
+    marginBottom: 12,
+    padding: 8,
+    borderRadius: 4,
+    backgroundColor: 'lightgray',
+  },
+  menuText: {
+    fontSize: 16,
+  },
+});
 
-
-
-
-
-
-
-
-
-
-
+export default SideMenu;

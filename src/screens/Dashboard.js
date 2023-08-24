@@ -14,18 +14,18 @@ import { SIZES } from '../core/sizes';
 import { theme } from '../core/theme';
 import Icon from 'react-native-vector-icons/AntDesign';
 import Icon2 from 'react-native-vector-icons/Ionicons'
-import Icon3 from 'react-native-vector-icons/Ionicons'
+import Icon3 from 'react-native-vector-icons/FontAwesome'
 import SideMenu  from '../components/SideMenu';
-
-import LoginScreen from './LoginScreen';
-import RegisterScreen from './RegisterScreen';
-import StartScreen from './StartScreen';
 import Navbar from '../components/Navbar';
 
 export default function Dashboard({ navigation }) {
   const [userData, setUserData] = useState(null);
   const [patients, setPatients] = useState([]);
+  const [isSideMenuVisible, setSideMenuVisible] = useState(false);
 
+  const toggleSideMenu = () => {
+    setSideMenuVisible(!isSideMenuVisible);
+  }
   const openSideMenu = () => {
   };
 
@@ -81,22 +81,32 @@ export default function Dashboard({ navigation }) {
     <Background2 >
       
       <View style={styles.headerView}>
-        {/* <Header>{userData ? `Hello ${userData.username}:` : 'Loading...'}</Header> */}
-        <TouchableOpacity onPress={openSideMenu}>
+        <View style={styles.userHeader}>
+          <Icon3 name="user-o" size={37} color={theme.colors.primary} />
+          <Header>{userData ? `${userData.username}` : 'Loading...'}</Header>
+        </View>
+        
+        {/* <TouchableOpacity onPress={toggleSideMenu}>
           <Icon name="menu-unfold" size={30} color={theme.colors.primary} />
-        </TouchableOpacity>
+        </TouchableOpacity> */}
           <Icon2 name="notifications-outline" size={35} color={theme.colors.primary} />
       </View>
-
+      {isSideMenuVisible && (
+        <View style={styles.sideMenu}>
+          <SideMenu />
+        </View>
+      )}
       <Search placeholder="Search patient?"/>
       <ScrollView style={styles.scrollView}>
       {patients.map((patient, index) => (
-        <PatientCard
-          key={index}
-          first_name={patient.first_name}
-          last_name={patient.last_name}
-          age={patient.email}
-        />
+        <TouchableOpacity onPress={() => navigation.navigate('PatientProgram')}>
+          <PatientCard
+            key={index}
+            first_name={patient.first_name}
+            last_name={patient.last_name}
+            age={patient.email}
+          />
+        </TouchableOpacity>
       ))}
     </ScrollView> 
       <Button style={styles.addButton} mode="contained"  onPress={() => navigation.navigate('AddPatientScreen')}>
@@ -133,6 +143,13 @@ const styles = StyleSheet.create({
     justifyContent: 'space-between',
     alignItems: 'center',
     width: 340,
+  },
+  userHeader:{
+    display: 'flex',
+    flexDirection: 'row',
+    justifyContent: 'center',
+    alignItems: 'center',
+    gap:15,
   },
   scrollView:{
     width: 340,

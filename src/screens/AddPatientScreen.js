@@ -1,13 +1,12 @@
 import React, { useState } from 'react';
-import { View, StyleSheet, TouchableOpacity } from 'react-native';
+import { View, StyleSheet, TouchableOpacity, Image } from 'react-native';
 import { Text } from 'react-native-paper';
 import Background from '../components/Background';
 import Logo from '../components/Logo';
 import Header from '../components/Header';
 import Button from '../components/Button';
 import TextInput from '../components/TextInput';
-import BirthdayInput from '../components/BirthdayInput';
-import BackButton from '../components/BackButton';
+import Navbar from '../components/Navbar';
 import ImagePickerComponent from '../components/ImagePicker';
 import { theme } from '../core/theme';
 import LogoutButton from '../components/LogoutButton';
@@ -47,7 +46,10 @@ export default function AddPatientScreen({ navigation }) {
                 /> */}
             </View>
             <View style={styles.profilePic}>
-                <ImagePickerComponent />
+                {/* <ImagePickerComponent /> */}
+                <TouchableOpacity>
+                    <Image source={require('../assets/addUser2.png')} style={styles.addUser}></Image>
+                </TouchableOpacity>
             </View>
             <TextInput
                 label="First Name"
@@ -100,6 +102,7 @@ export default function AddPatientScreen({ navigation }) {
         <Button mode="contained" >
             Save
         </Button>
+        <Navbar />
       </Background>
     )
   }
@@ -118,6 +121,10 @@ export default function AddPatientScreen({ navigation }) {
         flexDirection: 'row',
         justifyContent: 'start',
         alignItems: 'start',
+    },
+    addUser:{
+        width:100,
+        height:100,
     },
     birthdate: {
         display: 'flex',
