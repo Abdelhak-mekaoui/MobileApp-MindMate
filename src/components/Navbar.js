@@ -17,7 +17,9 @@ export default function Search(props) {
         <TouchableOpacity style={styles.iconContainer}>
           <Icon4 name="bed-patient" size={30} color={theme.colors.primary} />
         </TouchableOpacity>
-        <TouchableOpacity style={styles.iconContainer}>
+        <TouchableOpacity style={styles.iconContainer} 
+          onPress={() => props.robotPress()}
+        >
           <Icon3 name="robot-outline" size={30} color={theme.colors.primary} />
         </TouchableOpacity>
         <TouchableOpacity style={styles.iconContainer}>

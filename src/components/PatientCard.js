@@ -31,6 +31,12 @@ const styles = StyleSheet.create({
     marginBottom: 10, // Add some margin between cards
     borderColor:theme.colors.primary,
     borderWidth:2,
+
+    elevation: 4, // For Android
+    shadowColor: 'black', // For iOS
+    shadowOffset: { width: 1, height: 2 }, // For iOS
+    shadowOpacity: 0.3, // For iOS
+    shadowRadius: 4, // For iOS
   },
   textContainer: {
     marginLeft: 20, // Add some space between image and text

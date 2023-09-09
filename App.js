@@ -16,6 +16,10 @@ import {
   Dashboard,
   AddPatientScreen,
   PatientProgram,
+  RobotScreen,
+  QrCodeScreen,
+  RobotCodeScreen,
+  MedicationsScreen
 } from './src/screens'
 // import SideMenu from './src/components/SideMenu'
 
@@ -36,10 +40,16 @@ function MainStack() {
       <Stack.Screen name="Dashboard" component={Dashboard} />
       <Stack.Screen name="AddPatientScreen" component={AddPatientScreen} />
       <Stack.Screen name="PatientProgram" component={PatientProgram} />
+      <Stack.Screen name="RobotScreen" component={RobotScreen} />
+      <Stack.Screen name="QrCodeScreen" component={QrCodeScreen} />
+      <Stack.Screen name="RobotCodeScreen" component={RobotCodeScreen} />
+      <Stack.Screen name="MedicationsScreen" component={MedicationsScreen} />
+
       <Stack.Screen
         name="ResetPasswordScreen"
         component={ResetPasswordScreen}
       />
+
     </Stack.Navigator>
   );
 }
